@@ -45,7 +45,7 @@ class Node extends AbstractItem
         try {
             return parent::refresh();
         } catch (JenkinsApiException $e) {
-            throw new NodeNotFoundException($this->_nodeName, 0, $e);
+            throw new NodeNotFoundException($this->_nodeName, 404, $e);
         }
     }
 

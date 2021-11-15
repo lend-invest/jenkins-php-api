@@ -77,7 +77,7 @@ class Build extends AbstractItem
         try {
             return parent::refresh();
         } catch (JenkinsApiException $e) {
-            throw new BuildNotFoundException($this->_buildNumber, $this->_jobName, 0, $e);
+            throw new BuildNotFoundException($this->_buildNumber, $this->_jobName, 404, $e);
         }
     }
 
