@@ -155,7 +155,6 @@ class Jenkins
      */
     public function get($url, $depth = 1, $params = array(), array $curlOpts = [], $raw = false)
     {
-//        $url = str_replace(' ', '%20', sprintf('%s' . $url . '?depth=' . $depth, $this->_baseUrl));
         $url = sprintf('%s', $this->_baseUrl) . $url . '?depth=' . $depth;
         if ($params) {
             foreach ($params as $key => $val) {

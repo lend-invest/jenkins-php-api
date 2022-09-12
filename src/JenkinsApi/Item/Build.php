@@ -86,7 +86,7 @@ class Build extends AbstractItem
      */
     protected function getUrl()
     {
-        return sprintf('job/%s/%d/api/json', rawurlencode($this->_jobName), rawurlencode($this->_buildNumber));
+        return sprintf('job/%s/%d/api/json', $this->getUrlEncodedJobName($this->_jobName), rawurlencode($this->_buildNumber));
     }
 
     /**

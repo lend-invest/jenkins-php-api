@@ -35,6 +35,6 @@ class LastBuild extends Build
      */
     protected function getUrl()
     {
-        return sprintf('job/%s/lastBuild/api/json', rawurlencode($this->_jobName));
+        return sprintf('job/%s/lastBuild/api/json', $this->getUrlEncodedJobName($this->_jobName));
     }
 }

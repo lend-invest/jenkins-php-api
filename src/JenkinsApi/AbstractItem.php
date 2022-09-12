@@ -42,6 +42,16 @@ abstract class AbstractItem
     }
 
     /**
+     * @param string $jobName
+     *
+     * @return string
+     */
+    protected function getUrlEncodedJobName(string $jobName)
+    {
+        return str_replace('%2F', '/', rawurlencode($jobName));
+    }
+
+    /**
      * @return string
      */
     abstract protected function getUrl();

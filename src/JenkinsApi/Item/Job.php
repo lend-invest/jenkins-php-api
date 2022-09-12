@@ -49,7 +49,7 @@ class Job extends AbstractItem
      */
     protected function getUrl()
     {
-        return sprintf('job/%s/api/json', rawurlencode($this->_jobName));
+        return sprintf('job/%s/api/json', $this->getUrlEncodedJobName($this->_jobName));
     }
 
     /**
@@ -73,7 +73,7 @@ class Job extends AbstractItem
      */
     public function getBuild($buildId)
     {
-        return $this->_jenkins->getBuild($this->getName(), $buildId);
+        return $this->_jenkins->getBuild($this->_jobName, $buildId);
     }
 
     /**
@@ -120,7 +120,7 @@ class Job extends AbstractItem
         if (null === $this->_data->lastBuild) {
             return null;
         }
-        return $this->_jenkins->getBuild($this->getName(), $this->_data->lastBuild->number);
+        return $this->_jenkins->getBuild($this->_jobName, $this->_data->lastBuild->number);
     }
 
     /**
@@ -143,9 +143,9 @@ class Job extends AbstractItem
     public function launch($parameters = array())
     {
         if (empty($parameters)) {
-            return $this->_jenkins->post(sprintf('job/%s/build', rawurlencode($this->_jobName)));
+            return $this->_jenkins->post(sprintf('job/%s/build', $this->getUrlEncodedJobName($this->_jobName)));
         } else {
-            return $this->_jenkins->post(sprintf('job/%s/buildWithParameters', rawurlencode($this->_jobName)), $parameters);
+            return $this->_jenkins->post(sprintf('job/%s/buildWithParameters', $this->getUrlEncodedJobName($this->_jobName)), $parameters);
         }
     }
 
